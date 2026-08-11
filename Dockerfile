@@ -10,6 +10,7 @@ COPY package.json tsconfig.json ./
 COPY src ./src
 COPY plans ./plans
 COPY public ./public
+COPY migrations ./migrations
 USER bun
 EXPOSE 3000
-CMD ["bun","src/server.ts"]
+CMD ["bun","src/boot.ts"]

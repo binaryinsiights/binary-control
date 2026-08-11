@@ -18,7 +18,7 @@ async function routes(request: Request): Promise<Response> {
     const file = url.pathname === "/" ? "index.html" : url.pathname.slice(1);
     return new Response(Bun.file(new URL(`../public/${file}`, import.meta.url)));
   }
-  if (url.pathname === "/api/health") return json({ status: "ok", database: !!sql, version: "0.2.0" });
+  if (url.pathname === "/api/health") return json({ status: "ok", database: !!sql, version: "0.2.1" });
   if (url.pathname === "/api/v1/heartbeats" && request.method === "POST") {
     const raw = await request.text();
     const secret = process.env.HEARTBEAT_SECRET ?? "";

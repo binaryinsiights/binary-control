@@ -5,10 +5,8 @@ services:
       POSTGRES_DB: binary_control
       POSTGRES_USER: binary_control_admin
       POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?configure POSTGRES_ADMIN_PASSWORD}
-      BINARY_CONTROL_DB_PASSWORD: ${BINARY_CONTROL_DB_PASSWORD:?configure BINARY_CONTROL_DB_PASSWORD}
     volumes:
       - binary_control_db:/var/lib/postgresql/data
-      - ./migrations:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD-SHELL","pg_isready -U binary_control_admin -d binary_control"]
       interval: 10s
@@ -21,6 +19,8 @@ services:
         required: false
     environment:
       DATABASE_URL: ${DATABASE_URL:?configure DATABASE_URL}
+      MIGRATION_DATABASE_URL: ${MIGRATION_DATABASE_URL:?configure MIGRATION_DATABASE_URL}
+      DATABASE_RUNTIME_PASSWORD: ${BINARY_CONTROL_DB_PASSWORD:?configure BINARY_CONTROL_DB_PASSWORD}
       INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN:?configure INTERNAL_API_TOKEN}
       HEARTBEAT_SECRET: ${HEARTBEAT_SECRET:?configure HEARTBEAT_SECRET}
       DEFAULT_TENANT_ID: ${DEFAULT_TENANT_ID:?configure DEFAULT_TENANT_ID}
