@@ -1,5 +1,16 @@
 # Pacote operacional Binary Insights Thalya
 
+O repositório também contém a fundação executável do **Binary Control**, a central privada que registra clientes e acompanha instalações remotas sem copiar conversas ou credenciais.
+
+## Executar a fundação
+
+1. Copie `.env.example` para `.env` e gere segredos fortes.
+2. Execute `docker compose up --build`.
+3. Consulte `GET /api/health` e use o token interno nas rotas `/api/v1/*`.
+4. Instalações enviam heartbeats assinados por HMAC para `POST /api/v1/heartbeats`.
+
+Antes de publicar qualquer mudança, execute `bun install` e `bun check`.
+
 Este diretório é a fonte de verdade para preparar a plataforma privada da Binary Insights e implantar uma instalação independente do ecossistema fazer.ai por cliente.
 
 ## Regras inegociáveis
@@ -46,4 +57,3 @@ O guia local canônico está em:
 Os planos comerciais de origem estão em:
 
 `/home/leno/plano-comercial-agentes-ia-binary-insights.md`
-
