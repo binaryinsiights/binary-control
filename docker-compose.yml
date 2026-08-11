@@ -3,13 +3,14 @@ services:
     image: postgres:17-alpine
     environment:
       POSTGRES_DB: binary_control
-      POSTGRES_USER: binary_control
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?configure POSTGRES_PASSWORD}
+      POSTGRES_USER: binary_control_admin
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?configure POSTGRES_ADMIN_PASSWORD}
+      BINARY_CONTROL_DB_PASSWORD: ${BINARY_CONTROL_DB_PASSWORD:?configure BINARY_CONTROL_DB_PASSWORD}
     volumes:
       - binary_control_db:/var/lib/postgresql/data
       - ./migrations:/docker-entrypoint-initdb.d:ro
     healthcheck:
-      test: ["CMD-SHELL","pg_isready -U binary_control -d binary_control"]
+      test: ["CMD-SHELL","pg_isready -U binary_control_admin -d binary_control"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -26,7 +27,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    ports: ["127.0.0.1:3000:3000"]
+    ports: ["127.0.0.1:${BINARY_CONTROL_PORT:-3000}:3000"]
     restart: unless-stopped
 volumes:
   binary_control_db:

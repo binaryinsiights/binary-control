@@ -11,6 +11,18 @@ O repositório também contém a fundação executável do **Binary Control**, a
 
 Antes de publicar qualquer mudança, execute `bun install` e `bun check`.
 
+## Recursos disponíveis na v0.2.0
+
+- dashboard web interno com clientes, instalações, agentes e alertas;
+- API para catálogo de planos, clientes, instalações e agentes remotos;
+- heartbeat idempotente assinado por HMAC;
+- alerta automático quando um dos quatro serviços fica degradado ou offline;
+- auditoria das principais mutações;
+- migrations aditivas para serviços, agentes, checklist, alertas e manutenção;
+- PostgreSQL com papel administrativo separado do runtime;
+- RLS obrigatório, inclusive para o proprietário das tabelas;
+- nenhuma conversa, credencial ou dado clínico armazenado na central.
+
 Este diretório é a fonte de verdade para preparar a plataforma privada da Binary Insights e implantar uma instalação independente do ecossistema fazer.ai por cliente.
 
 ## Regras inegociáveis
