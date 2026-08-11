@@ -24,6 +24,8 @@ services:
       INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN:?configure INTERNAL_API_TOKEN}
       HEARTBEAT_SECRET: ${HEARTBEAT_SECRET:?configure HEARTBEAT_SECRET}
       DEFAULT_TENANT_ID: ${DEFAULT_TENANT_ID:?configure DEFAULT_TENANT_ID}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?configure ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?configure ADMIN_PASSWORD}
     depends_on:
       postgres:
         condition: service_healthy

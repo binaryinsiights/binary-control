@@ -11,7 +11,8 @@
     <button data-view="agents">Agentes</button><button data-view="alerts">Alertas</button>
   </nav></aside>
   <main><header><div><small>CENTRAL OPERACIONAL</small><h1 id="title">Visão geral</h1></div><span id="connection">Não autenticado</span></header>
-  <section id="login"><h2>Acesso interno</h2><p>Informe o token administrativo. Ele fica apenas nesta aba.</p><input id="token" type="password" placeholder="Token interno"><button id="connect">Conectar</button></section>
-  <section id="content" hidden><div id="cards" class="cards"></div><div class="panel"><div class="panel-title"><h2 id="table-title">Instalações recentes</h2><button id="refresh">Atualizar</button></div><div id="table"></div></div></section>
+  <section id="login"><h2>Acesso interno</h2><p>Entre com sua conta da Binary Insights.</p><input id="email" type="email" placeholder="E-mail"><input id="password" type="password" placeholder="Senha"><button id="connect">Entrar</button></section>
+  <section id="content" hidden><div id="cards" class="cards"></div><div class="panel"><div class="panel-title"><h2 id="table-title">Registros</h2><div><button id="new-record">Novo</button><button id="refresh">Atualizar</button></div></div><div id="table"></div></div></section>
+  <dialog id="modal"><form id="record-form" method="dialog"><div class="panel-title"><h2 id="form-title">Novo registro</h2><button value="cancel">Fechar</button></div><div id="form-fields"></div><button id="save" value="default">Salvar</button></form></dialog>
   </main><script src="/app.js"></script>
 </body></html>

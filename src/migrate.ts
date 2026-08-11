@@ -1,6 +1,6 @@
 import postgres from "postgres";
 
-const migrationFiles = ["001_foundation.sql", "002_operations.sql"] as const;
+const migrationFiles = ["001_foundation.sql", "002_operations.sql", "003_crm_auth.sql"] as const;
 export async function migrate(): Promise<void> {
   const migrationUrl = process.env.MIGRATION_DATABASE_URL;
   const runtimePassword = process.env.DATABASE_RUNTIME_PASSWORD;
