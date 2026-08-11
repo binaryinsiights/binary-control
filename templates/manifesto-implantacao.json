@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "deploymentId": "preencher-com-uuid",
+  "customer": {
+    "externalId": "cliente-0001",
+    "name": "Clínica de exemplo",
+    "industry": "odontologia"
+  },
+  "plan": {
+    "code": "PROFISSIONAL",
+    "version": "1.0.0"
+  },
+  "infrastructure": {
+    "provider": "preencher",
+    "vpsReference": "preencher",
+    "orchestrator": "coolify",
+    "rootDomain": "example.com.br",
+    "instanceId": "preencher-apos-deploy"
+  },
+  "services": {
+    "agentsUrl": "https://agents.example.com.br",
+    "chatwootUrl": "https://chatwoot.example.com.br",
+    "langfuseUrl": "https://langfuse.example.com.br"
+  },
+  "agentTemplate": {
+    "industry": "odontologia",
+    "templateVersion": "1.0.0"
+  },
+  "credentialReferences": [],
+  "approvals": {
+    "infrastructure": null,
+    "agentContent": null,
+    "homologation": null,
+    "production": null
+  },
+  "status": "DRAFT"
+}
+

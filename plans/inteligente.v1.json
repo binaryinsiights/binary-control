@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "planCode": "INTELIGENTE",
+  "version": "1.0.0",
+  "displayName": "Thalya Inteligente",
+  "limits": {
+    "agents": 4,
+    "channels": 4,
+    "monthlyConversations": 4000,
+    "knowledgeDocuments": 150,
+    "monthlyAudioMinutes": 300,
+    "monthlyTechnicalHours": 6,
+    "customIntegrations": 2
+  },
+  "features": {
+    "text": true,
+    "stt": true,
+    "tts": true,
+    "calendar": true,
+    "drive": true,
+    "followUp": true,
+    "asaas": true,
+    "customIntegrations": true,
+    "loadTest": true
+  },
+  "delivery": {
+    "support": "Prioritário com SLA contratual",
+    "adjustmentRounds": 3,
+    "commitmentMonths": 12,
+    "reporting": "advanced"
+  },
+  "acceptance": [
+    "Todos os critérios do Profissional validados",
+    "Agentes especializados e roteamento validados",
+    "Cobrança e consulta de pagamento validadas em ambiente seguro",
+    "Integrações contratadas validadas",
+    "Teste de carga aprovado",
+    "Alertas, backup e restauração validados"
+  ]
+}
+

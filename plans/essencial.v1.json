@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "planCode": "ESSENCIAL",
+  "version": "1.0.0",
+  "displayName": "Thalya Essencial",
+  "limits": {
+    "agents": 1,
+    "channels": 1,
+    "monthlyConversations": 500,
+    "knowledgeDocuments": 30,
+    "monthlyAudioMinutes": 0,
+    "monthlyTechnicalHours": 0,
+    "customIntegrations": 0
+  },
+  "features": {
+    "text": true,
+    "stt": false,
+    "tts": false,
+    "calendar": false,
+    "drive": false,
+    "followUp": false,
+    "asaas": false,
+    "customIntegrations": false,
+    "loadTest": false
+  },
+  "delivery": {
+    "support": "Horário comercial",
+    "adjustmentRounds": 2,
+    "commitmentMonths": 3,
+    "reporting": "simple"
+  },
+  "acceptance": [
+    "Atendimento textual validado",
+    "Base de conhecimento com grounding validada",
+    "Transferência humana validada",
+    "Um canal validado",
+    "Traces presentes no Langfuse"
+  ]
+}
+

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://binaryinsights.com.br/schemas/thalya-plan-v1.json",
+  "title": "Plano provisionável Thalya",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "planCode", "version", "displayName", "limits", "features", "delivery", "acceptance"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "planCode": { "enum": ["ESSENCIAL", "PROFISSIONAL", "INTELIGENTE"] },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "displayName": { "type": "string", "minLength": 1 },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agents", "channels", "monthlyConversations", "knowledgeDocuments", "monthlyTechnicalHours"],
+      "properties": {
+        "agents": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "channels": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "monthlyConversations": { "type": "integer", "minimum": 1 },
+        "knowledgeDocuments": { "type": "integer", "minimum": 1 },
+        "monthlyAudioMinutes": { "type": "integer", "minimum": 0 },
+        "monthlyTechnicalHours": { "type": "number", "minimum": 0 },
+        "customIntegrations": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "stt", "tts", "calendar", "drive", "followUp", "asaas", "customIntegrations", "loadTest"],
+      "properties": {
+        "text": { "type": "boolean" },
+        "stt": { "type": "boolean" },
+        "tts": { "type": "boolean" },
+        "calendar": { "type": "boolean" },
+        "drive": { "type": "boolean" },
+        "followUp": { "type": "boolean" },
+        "asaas": { "type": "boolean" },
+        "customIntegrations": { "type": "boolean" },
+        "loadTest": { "type": "boolean" }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "required": ["support", "adjustmentRounds", "commitmentMonths", "reporting"],
+      "properties": {
+        "support": { "type": "string" },
+        "adjustmentRounds": { "type": "integer", "minimum": 0 },
+        "commitmentMonths": { "type": "integer", "minimum": 0 },
+        "reporting": { "enum": ["simple", "operational", "advanced"] }
+      }
+    },
+    "acceptance": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
+

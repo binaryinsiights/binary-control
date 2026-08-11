@@ -1,0 +1,34 @@
+# Segredos e ambiente
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.token
+credentials.json
+secrets/
+
+# Sessões, dados e backups
+auth_info*/
+baileys*/
+backups/
+*.dump
+*.sql
+*.sql.gz
+*.tar
+*.tar.gz
+
+# Dependências e build
+node_modules/
+dist/
+coverage/
+.cache/
+
+# Sistema e editores
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
