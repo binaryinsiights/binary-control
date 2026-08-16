@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Manifesto de implantação Binary",
+  "type": "object",
+  "required": ["schemaVersion", "customer", "plan", "infrastructure", "agent", "channels", "approvals"],
+  "properties": {
+    "schemaVersion": {"type": "integer", "minimum": 1},
+    "customer": {
+      "type": "object",
+      "required": ["name", "industry"],
+      "properties": {
+        "externalId": {"type": "string"},
+        "name": {"type": "string", "minLength": 1},
+        "legalName": {"type": "string"},
+        "document": {"type": "string"},
+        "industry": {"type": "string", "minLength": 1},
+        "contacts": {"type": "array", "items": {"$ref": "#/$defs/contact"}}
+      },
+      "additionalProperties": false
+    },
+    "plan": {
+      "type": "object",
+      "required": ["code", "version"],
+      "properties": {
+        "code": {"enum": ["ESSENCIAL", "PROFISSIONAL", "ENTERPRISE"]},
+        "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"}
+      },
+      "additionalProperties": false
+    },
+    "infrastructure": {
+      "type": "object",
+      "required": ["provider", "orchestrator", "rootDomain", "instanceId"],
+      "properties": {
+        "provider": {"type": "string"},
+        "vpsReference": {"type": "string"},
+        "orchestrator": {"enum": ["DOCKER_COMPOSE", "COOLIFY"]},
+        "rootDomain": {"type": "string"},
+        "instanceId": {"type": "string"},
+        "region": {"type": "string"},
+        "coolifyProjectUuid": {"type": "string"},
+        "coolifyEnvironmentUuid": {"type": "string"},
+        "coolifyServerUuid": {"type": "string"},
+        "coolifyDestinationUuid": {"type": "string"},
+        "domains": {
+          "type": "object",
+          "required": ["agents", "chatwoot", "langfuse", "baileys"],
+          "properties": {
+            "agents": {"type": "string"},
+            "chatwoot": {"type": "string"},
+            "langfuse": {"type": "string"},
+            "baileys": {"type": "string"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "agent": {
+      "type": "object",
+      "required": ["templateId", "templateVersion"],
+      "properties": {
+        "templateId": {"type": "string"},
+        "templateVersion": {"type": "string"},
+        "name": {"type": "string"},
+        "role": {"type": "string"},
+        "prompt": {"type": "string"},
+        "documents": {"type": "array", "items": {"type": "string"}},
+        "businessHours": {"type": "string"},
+        "humanHandoff": {"type": "string"},
+        "integrations": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "channels": {
+      "type": "object",
+      "properties": {
+        "chatwootSource": {"enum": ["new", "existing"]},
+        "inboxType": {"type": "string"},
+        "whatsappNumber": {"type": "string"},
+        "whatsappProvider": {"enum": ["BAILEYS", "CLOUD_API", "Z_API", "OTHER"]},
+        "inboxName": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "credentials": {
+      "type": "object",
+      "properties": {
+        "model": {"type": "string"},
+        "embedding": {"type": "string"},
+        "stt": {"type": "string"},
+        "tts": {"type": "string"},
+        "google": {"type": "string"},
+        "asaas": {"type": "string"},
+        "chatwoot": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "approvals": {
+      "type": "object",
+      "required": ["infrastructure", "agentContent", "homologation", "production"],
+      "properties": {
+        "infrastructure": {},
+        "agentContent": {},
+        "homologation": {},
+        "production": {}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "contact": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {"name": {"type": "string"}, "role": {"type": "string"}, "email": {"type": "string"}, "phone": {"type": "string"}},
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

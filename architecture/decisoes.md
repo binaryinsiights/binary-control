@@ -29,7 +29,9 @@ Cada implantação seguirá o fluxo oficial:
 10. conexão com Chatwoot;
 11. validação ponta a ponta.
 
-Coolify é o padrão recomendado para novas VPS. Portainer e Compose genérico permanecem compatíveis quando necessários.
+Coolify é o padrão recomendado para novas VPS. Docker Compose via SSH permanece como
+opção para ambientes sem painel. A Central não deve fingir suporte a um orquestrador:
+cada opção precisa de um adaptador próprio e de credenciais/identificadores explícitos.
 
 ## ADR-003: plano comercial separado do instalador
 
@@ -64,4 +66,3 @@ O n8n não será instalado nem utilizado. Integrações usarão ferramentas nati
 - SSH restrito a infraestrutura.
 - Prévia obrigatória antes de mutações remotas.
 - Logs centrais sem conteúdo de mensagens e sem dados clínicos.
-

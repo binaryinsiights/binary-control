@@ -10,6 +10,9 @@ O repositório também contém a fundação executável do **Binary Control**, a
 4. Instalações enviam heartbeats assinados por HMAC para `POST /api/v1/heartbeats`.
 
 Antes de publicar qualquer mudança, execute `bun install` e `bun check`.
+Quando o clone do Agents estiver ao lado deste diretório, execute também
+`bun run plans:sync-check` para impedir divergência entre o catálogo comercial e
+o catálogo carregado pela Central.
 
 ## Recursos disponíveis na v0.2.0
 
@@ -41,7 +44,7 @@ Este diretório é a fonte de verdade para preparar a plataforma privada da Bina
 
 1. Preencher `templates/ficha-cliente.md`.
 2. Escolher um perfil em `plans/`.
-3. Preencher `templates/manifesto-implantacao.json`.
+3. Preencher `templates/manifesto-implantacao.json` conforme `templates/manifesto.schema.json`.
 4. Executar `checklists/onboarding-cliente.md` seguindo o onboarding oficial.
 5. Executar `checklists/homologacao.md`.
 6. Registrar a instância conforme `monitoring/contrato-monitoramento.md`.
@@ -54,6 +57,8 @@ Este diretório é a fonte de verdade para preparar a plataforma privada da Bina
 - `plans/*.json`: planos Thalya versionados.
 - `templates/ficha-cliente.md`: coleta comercial e operacional.
 - `templates/manifesto-implantacao.json`: registro de uma implantação.
+- `templates/manifesto.schema.json`: contrato completo do manifesto, incluindo agente,
+  canais, credenciais por referência e orquestrador.
 - `checklists/onboarding-cliente.md`: execução por VPS.
 - `checklists/homologacao.md`: critérios de entrega.
 - `monitoring/contrato-monitoramento.md`: dados enviados à central.

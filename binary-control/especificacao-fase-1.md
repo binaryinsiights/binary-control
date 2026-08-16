@@ -102,7 +102,7 @@ Todas as tabelas internas seguem multi-tenancy e RLS. Segredos devem usar o meca
 
 ## Critérios de aceite
 
-- cadastrar um cliente e seu plano;
+- cadastrar um cliente e seu plano, mesmo antes de existir contrato formal;
 - registrar uma instalação remota;
 - receber heartbeat autenticado;
 - exibir saúde e versão;

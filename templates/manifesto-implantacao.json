@@ -4,7 +4,10 @@
   "customer": {
     "externalId": "cliente-0001",
     "name": "Clínica de exemplo",
-    "industry": "odontologia"
+    "legalName": "Clínica de exemplo Ltda.",
+    "document": "",
+    "industry": "odontologia",
+    "contacts": [{"name": "Responsável", "role": "operacional", "email": "", "phone": ""}]
   },
   "plan": {
     "code": "PROFISSIONAL",
@@ -13,20 +16,53 @@
   "infrastructure": {
     "provider": "preencher",
     "vpsReference": "preencher",
-    "orchestrator": "coolify",
+    "orchestrator": "COOLIFY",
     "rootDomain": "example.com.br",
-    "instanceId": "preencher-apos-deploy"
+    "instanceId": "preencher-apos-deploy",
+    "region": "sa-east-1",
+    "coolifyProjectUuid": "",
+    "coolifyEnvironmentUuid": "",
+    "coolifyServerUuid": "",
+    "coolifyDestinationUuid": "",
+    "domains": {
+      "agents": "agents.example.com.br",
+      "chatwoot": "chatwoot.example.com.br",
+      "langfuse": "langfuse.example.com.br",
+      "baileys": "baileys.example.com.br"
+    }
   },
   "services": {
     "agentsUrl": "https://agents.example.com.br",
     "chatwootUrl": "https://chatwoot.example.com.br",
     "langfuseUrl": "https://langfuse.example.com.br"
   },
-  "agentTemplate": {
-    "industry": "odontologia",
-    "templateVersion": "1.0.0"
+  "agent": {
+    "templateId": "maria-clinica",
+    "templateVersion": "1.0.0",
+    "name": "Maria",
+    "role": "Recepção e atendimento",
+    "prompt": "",
+    "documents": [],
+    "businessHours": "",
+    "humanHandoff": "",
+    "integrations": []
   },
-  "credentialReferences": [],
+  "channels": {
+    "chatwootSource": "new",
+    "inboxType": "api",
+    "whatsappProvider": "BAILEYS",
+    "whatsappNumber": "",
+    "inboxName": "Atendimento"
+  },
+  "credentials": {
+    "model": "",
+    "embedding": "",
+    "stt": "",
+    "tts": "",
+    "google": "",
+    "asaas": "",
+    "chatwoot": ""
+  },
   "approvals": {
     "infrastructure": null,
     "agentContent": null,
@@ -35,4 +71,3 @@
   },
   "status": "DRAFT"
 }
-

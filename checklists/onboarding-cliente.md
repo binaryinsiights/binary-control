@@ -10,6 +10,8 @@
 
 ## Fase 1: o agente e os acessos
 
+- [ ] Manifesto validado pelo schema, com plano, agente, canais e aprovações.
+
 - [ ] VPS escolhida pelo usuário.
 - [ ] Domínio escolhido pelo usuário.
 - [ ] Acesso SSH validado.
@@ -65,4 +67,3 @@
 - [ ] Monitoramento registrado na central.
 - [ ] Responsáveis receberam os acessos.
 - [ ] Produção autorizada explicitamente.
-
