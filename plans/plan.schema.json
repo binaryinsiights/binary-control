@@ -7,7 +7,7 @@
   "required": ["schemaVersion", "planCode", "version", "displayName", "limits", "features", "delivery", "acceptance"],
   "properties": {
     "schemaVersion": { "const": 1 },
-    "planCode": { "enum": ["ESSENCIAL", "PROFISSIONAL", "INTELIGENTE"] },
+    "planCode": { "enum": ["ESSENCIAL", "PROFISSIONAL", "ENTERPRISE"] },
     "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
     "displayName": { "type": "string", "minLength": 1 },
     "limits": {
@@ -57,4 +57,3 @@
     }
   }
 }
-

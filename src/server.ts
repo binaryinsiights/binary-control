@@ -81,7 +81,7 @@ async function routes(request: Request): Promise<Response> {
   }
   if (url.pathname === "/api/v1/deployments" && request.method === "POST") {
     const body = await request.json() as Record<string,string>;
-    if (!isUuid(body.customerId)||!isUuid(body.deploymentId)||!textField(body.instanceId,120)||!["ESSENCIAL","PROFISSIONAL","INTELIGENTE"].includes(body.planCode)||!/^\d+\.\d+\.\d+$/.test(body.planVersion??"")) return json({error:"invalid_deployment"},422);
+    if (!isUuid(body.customerId)||!isUuid(body.deploymentId)||!textField(body.instanceId,120)||!["ESSENCIAL","PROFISSIONAL","ENTERPRISE"].includes(body.planCode)||!/^\d+\.\d+\.\d+$/.test(body.planVersion??"")) return json({error:"invalid_deployment"},422);
     const [row]=await tenantQuery(tenantId,async(tx)=>{
       const [created]=await tx`insert into managed_deployments(tenant_id,customer_id,deployment_id,instance_id,plan_code,plan_version) values(${tenantId},${body.customerId},${body.deploymentId},${body.instanceId},${body.planCode},${body.planVersion}) returning *`;
       await tx`insert into audit_events(tenant_id,actor_id,action,entity_type,entity_id) values(${tenantId},${actor.id},'deployment.created','managed_deployment',${created.id})`;
@@ -109,7 +109,7 @@ async function routes(request: Request): Promise<Response> {
   }
   if (url.pathname === "/api/v1/contracts" && request.method === "POST") {
     const body=await request.json() as Record<string,string|number>;
-    if(!isUuid(body.customerId)||!["ESSENCIAL","PROFISSIONAL","INTELIGENTE"].includes(String(body.planCode))||!/^\d+\.\d+\.\d+$/.test(String(body.planVersion)))return json({error:"invalid_contract"},422);
+    if(!isUuid(body.customerId)||!["ESSENCIAL","PROFISSIONAL","ENTERPRISE"].includes(String(body.planCode))||!/^\d+\.\d+\.\d+$/.test(String(body.planVersion)))return json({error:"invalid_contract"},422);
     const [row]=await tenantQuery(tenantId,(tx)=>tx`insert into managed_contracts(tenant_id,customer_id,plan_code,plan_version,status,starts_at,monthly_value_cents,setup_value_cents)
       values(${tenantId},${body.customerId},${body.planCode},${body.planVersion},${body.status??'draft'},${body.startsAt??null},${Number(body.monthlyValueCents??0)},${Number(body.setupValueCents??0)}) returning *`);
     return json({data:row},201);

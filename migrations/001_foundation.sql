@@ -6,7 +6,7 @@ create table managed_customers (
 );
 create table managed_deployments (
  id uuid primary key default gen_random_uuid(), tenant_id uuid not null, customer_id uuid not null references managed_customers(id),
- deployment_id uuid not null, instance_id text not null, plan_code text not null check(plan_code in ('ESSENCIAL','PROFISSIONAL','INTELIGENTE')),
+ deployment_id uuid not null, instance_id text not null, plan_code text not null check(plan_code in ('ESSENCIAL','PROFISSIONAL','ENTERPRISE')),
  plan_version text not null, state text not null default 'DRAFT', health_status text not null default 'offline',
  last_heartbeat_at timestamptz, created_at timestamptz not null default now(), updated_at timestamptz not null default now(),
  unique(tenant_id,deployment_id), unique(tenant_id,instance_id)
